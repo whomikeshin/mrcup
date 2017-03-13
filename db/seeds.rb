@@ -5,3 +5,9 @@ mike = User.create!(
   username: "mike",
   password: "password",
 )
+
+jin = User.create!(
+  email: "jin@email.com",
+  username: "jin",
+  password: "password"
+)
