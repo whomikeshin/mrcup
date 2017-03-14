@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314005813) do
+ActiveRecord::Schema.define(version: 20170314012356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170314005813) do
     t.boolean  "blind",      default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "user_id"
     t.index ["name"], name: "index_cupping_sessions_on_name", using: :btree
   end
 
@@ -31,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170314005813) do
     t.integer  "dry"
     t.integer  "break"
     t.float    "flavor"
-    t.integer  "acidity"
+    t.float    "acidity"
     t.integer  "intensity"
     t.float    "body"
     t.integer  "level"
@@ -42,10 +43,12 @@ ActiveRecord::Schema.define(version: 20170314005813) do
     t.float    "overall"
     t.float    "final_score"
     t.text     "notes"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "defects"
     t.integer  "defect_intensity"
+    t.integer  "cupping_session_id"
+    t.float    "aftertaste"
   end
 
   create_table "users", force: :cascade do |t|
