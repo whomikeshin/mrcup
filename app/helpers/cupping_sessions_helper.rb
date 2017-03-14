@@ -1,0 +1,2 @@
+module CuppingSessionsHelper
+end

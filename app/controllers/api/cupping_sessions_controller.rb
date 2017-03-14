@@ -1,0 +1,2 @@
+class CuppingSessionsController < ApplicationController
+end

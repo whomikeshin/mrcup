@@ -6,13 +6,13 @@ import {
   View,
 } from 'react-native';
 
-import Welcome from './app/components/welcome';
+import Userauth from './app/components/userauth';
 
 export default class mrcup extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Welcome/>
+        <Userauth/>
       </View>
     );
   }

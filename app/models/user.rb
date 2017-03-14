@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }
   validates :username, :email, :password_digest, :session_token, presence: true
 
+  has_many :cupping_sessions, dependent: :destroy
+
   # add in find by email option
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
