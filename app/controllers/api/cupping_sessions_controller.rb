@@ -1,2 +1,4 @@
-class CuppingSessionsController < ApplicationController
+module Api
+  class CuppingSessionsController < ApplicationController
+  end
 end

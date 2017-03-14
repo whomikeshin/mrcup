@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }
   validates :username, :email, :password_digest, :session_token, presence: true
 
+  ######  ASSOCIATIONS  ######
   has_many :cupping_sessions, dependent: :destroy
 
   # add in find by email option

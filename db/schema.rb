@@ -10,18 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314001539) do
+ActiveRecord::Schema.define(version: 20170314005813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cupping_sessions", force: :cascade do |t|
-    t.text     "name"
+    t.string   "name"
     t.integer  "cups",       default: 1
     t.boolean  "blind",      default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["name"], name: "index_cupping_sessions_on_name", using: :btree
+  end
+
+  create_table "samples", force: :cascade do |t|
+    t.string   "name"
+    t.float    "roast_level"
+    t.float    "fragrance"
+    t.integer  "dry"
+    t.integer  "break"
+    t.float    "flavor"
+    t.integer  "acidity"
+    t.integer  "intensity"
+    t.float    "body"
+    t.integer  "level"
+    t.float    "balance"
+    t.integer  "uniformity"
+    t.integer  "clean_cup"
+    t.integer  "sweetness"
+    t.float    "overall"
+    t.float    "final_score"
+    t.text     "notes"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "defects"
+    t.integer  "defect_intensity"
   end
 
   create_table "users", force: :cascade do |t|
