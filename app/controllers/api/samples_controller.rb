@@ -20,7 +20,7 @@ module Api
         @sample.destroy
         render :show
       else
-        render json: ["Sample does not exist"]. status: 422
+        render json: ["Sample does not exist"], status: 422
       end
     end
 
@@ -29,8 +29,13 @@ module Api
       if @sample.update(sample_params)
         render :show
       else
-        render json: @sample.errors.full_messages. status: 422
+        render json: @sample.errors.full_messages, status: 422
       end
+    end
+
+    def index
+      @samples = Sample.all
+      render :index
     end
 
     private
