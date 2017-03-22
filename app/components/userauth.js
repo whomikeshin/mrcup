@@ -6,55 +6,73 @@ import {
   View,
   TextInput,
   Button,
+  Alert,
 } from 'react-native';
+
+const onButtonPress = () => {
+  Alert.alert('Button pressed!');
+};
 
 export default class UserAuth extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "Username",
-      password: "Password",
+      username: 'Username',
+      password: 'Password',
     };
-  }
-
-  onPressLogin() {
-    console.warn("pressed");
   }
 
   render() {
     return (
-      <View>
-        <Text style={styles.text}>
-          CUPFEE
-        </Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={(value) => this.setState(value)}
-          value={this.state.username}
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={(value) => this.setState(value)}
-          value={this.state.password}
-        />
-        <Button
-          onPress={this.onPressLogin()}
-          title="Login"
-          style={styles.button}
-        />
+      <View style={styles.containter}>
+        <View style={styles.header}>
+          <Text style={styles.text}>
+            CUPFEE
+          </Text>
+        </View>
+        <View style={styles.body}>
+          <TextInput
+            style={styles.input}
+            onChangeText={(value) => this.setState(value)}
+            value={this.state.username}
+            />
+          <TextInput
+            style={styles.input}
+            onChangeText={(value) => this.setState(value)}
+            value={this.state.password}
+            />
+          <Button
+            style={styles.button}
+            onPress={onButtonPress}
+            title="Login"
+            />
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    flex: 2,
+    backgroundColor: '#593C1F',
+    width: '100%',
+    maxHeight: 200,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   text: {
     fontSize: 48,
-    color: '#593C1F',
-    textAlign: 'center',
-    justifyContent: 'center',
+    color: 'white',
     fontWeight: 'bold',
-    margin: 20
+    margin: 20,
+  },
+  body: {
+    flex: 2,
   },
   input: {
     fontSize: 14,
@@ -64,13 +82,10 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     color: 'gray',
     borderWidth: 1,
-    padding: 5,
+    padding: 10,
     margin: 5,
     borderRadius: 5,
   },
-  button: {
-    backgroundColor: 'blue'
-  }
 });
 
-AppRegistry.registerComponent('userauth', () => mrcup);
+AppRegistry.registerComponent('UserAuth', () => UserAuth);
