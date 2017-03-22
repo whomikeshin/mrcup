@@ -2602,3 +2602,21 @@ Processing by Api::SamplesController#show as JSON
 Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/api/users/7/cupping_sessions/2/samples/1" for ::1 at 2017-03-21 12:53:34 -0400
+Processing by Api::SamplesController#show as JSON
+  Parameters: {"user_id"=>"7", "cupping_session_id"=>"2", "id"=>"1"}
+  [1m[36mSample Load (1.1ms)[0m  [1m[34mSELECT  "samples".* FROM "samples" WHERE "samples"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/samples/show.json.jbuilder
+  Rendered api/samples/show.json.jbuilder (0.7ms)
+Completed 200 OK in 9ms (Views: 4.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/users/7/cupping_sessions/2/samples/1" for ::1 at 2017-03-21 12:53:35 -0400
+Processing by Api::SamplesController#show as JSON
+  Parameters: {"user_id"=>"7", "cupping_session_id"=>"2", "id"=>"1"}
+  [1m[36mSample Load (0.4ms)[0m  [1m[34mSELECT  "samples".* FROM "samples" WHERE "samples"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/samples/show.json.jbuilder
+  Rendered api/samples/show.json.jbuilder (0.7ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 0.4ms)
+
+

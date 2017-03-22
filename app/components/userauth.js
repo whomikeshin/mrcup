@@ -5,33 +5,42 @@ import {
   Text,
   View,
   TextInput,
+  Button,
 } from 'react-native';
 
-export default class userauth extends Component {
+export default class UserAuth extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
+      username: "Username",
+      password: "Password",
     };
   }
 
-  onChangeText(value){
-    this.setState({
-      username: value
-    });
+  onPressLogin() {
+    console.warn("pressed");
   }
 
   render() {
     return (
       <View>
         <Text style={styles.text}>
-          Welcome to Mr. Cup!
+          CUPFEE
         </Text>
         <TextInput
-          placeholder="Enter Username"
-          value={this.state.username}
-          onChangeText={(value) => this.onChangeText(value)}
           style={styles.input}
+          onChangeText={(value) => this.setState(value)}
+          value={this.state.username}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={(value) => this.setState(value)}
+          value={this.state.password}
+        />
+        <Button
+          onPress={this.onPressLogin()}
+          title="Login"
+          style={styles.button}
         />
       </View>
     );
@@ -40,14 +49,27 @@ export default class userauth extends Component {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 28,
+    fontSize: 48,
+    color: '#593C1F',
     textAlign: 'center',
-    margin: 10,
+    justifyContent: 'center',
+    fontWeight: 'bold',
+    margin: 20
   },
   input: {
-    fontSize: 20,
+    fontSize: 14,
     textAlign: 'left',
-    margin: 10,
+    backgroundColor: '#f8f8f8',
+    height: 40,
+    borderColor: 'gray',
+    color: 'gray',
+    borderWidth: 1,
+    padding: 5,
+    margin: 5,
+    borderRadius: 5,
+  },
+  button: {
+    backgroundColor: 'blue'
   }
 });
 

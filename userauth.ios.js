@@ -12,7 +12,7 @@ class UserAuth extends Component {
       <View style={{padding: 10}}>
         <TextInput
           style={{height: 40}}
-          placeholder="Enter username here"
+          placeholder="Enter username1"
           onChangeText={(text) => this.setState({text})}
         />
       </View>
