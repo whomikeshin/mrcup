@@ -7,12 +7,13 @@ import {
 } from 'react-native';
 
 import Userauth from './app/components/userauth';
+import Nav from './app/components/navigator';
 
 export default class mrcup extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Userauth/>
+        <Nav/>
       </View>
     );
   }
