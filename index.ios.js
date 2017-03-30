@@ -9,12 +9,13 @@ import {
 import UserAuth from './app/components/userauth';
 import Nav from './app/components/navigator';
 import NavIOS from './app/components/navigatorIOS';
+import Navi from './app/components/navigation';
 
 export default class mrcup extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavIOS/>
+        <Navi/>
       </View>
     );
   }
