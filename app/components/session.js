@@ -9,6 +9,8 @@ import {
   Alert,
 } from 'react-native';
 
+const url = 'api/users/7/cupping_sessions/1/samples';
+
 export default class Session extends Component {
   static navigationOptions = {
     title: ({ state }) => {

@@ -59,7 +59,7 @@ class AccountScreen extends React.Component {
         <Text>Account Info</Text>
           <Button
             onPress={() => navigate('SignIn')}
-            title="SignIn"
+            title="Sign In"
           />
       </View>
     );

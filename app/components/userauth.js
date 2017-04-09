@@ -14,7 +14,7 @@ const onButtonPress = () => {
   Alert.alert('Button pressed!');
 };
 
-const url = '/api/session'
+const url = '/api/session';
 
 export default class UserAuth extends Component {
   constructor(props) {
@@ -56,7 +56,7 @@ export default class UserAuth extends Component {
         <Button
           style={styles.button}
           onPress={onButtonPress}
-          title="Login"
+          title="Log In"
         />
       </View>
     );
