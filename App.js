@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Button,
+  SytleSheet,
 } from 'react-native';
 
 import {
@@ -11,56 +12,28 @@ import {
   TabNavigator,
 } from 'react-navigation';
 
+import Session from './app/components/session';
 import UserAuth from './app/components/userauth';
-
-class SessionScreen extends React.Component {
-  static navigationOptions = {
-    title: ({ state }) => {
-      if (state.params.mode === 'info') {
-        return 'Advanced';
-      }
-      return `${state.params.name}`;
-    },
-    header: ({ state, setParams }) => {
-      let right = (
-        <Button
-          title='Advanced'
-          onPress={() => setParams({ mode: 'info' })}
-        />
-      );
-      if (state.params.mode === 'info') {
-        right = (
-          <Button
-            title="Done"
-            onPress={() => setParams({ mode: 'none' })}
-          />
-        );
-      }
-      return { right };
-    },
-  };
-
-  render() {
-    // The screen's current route is passed in to `props.navigation.state`:
-    const { params } = this.props.navigation.state;
-    return (
-      <View>
-        <Text>{params.name} cupping session</Text>
-      </View>
-    );
-  }
-}
+import PastLogs from './app/components/pastlogs';
 
 class StartScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View>
-        <Text>Start Cupping</Text>
-          <Button
-            onPress={() => navigate('Session', { name: 'Arabica' })}
-            title="Session"
+        <Text>Welcome!</Text>
+        <Button
+          onPress={() => navigate('Login')}
+          title="Log In"
           />
+        <Button
+          onPress={() => navigate('Session', { name: 'Arabica' })}
+          title="Start Cupping"
+        />
+        <Button
+          onPress={() => navigate('PastLogs')}
+          title="Past Logs"
+        />
       </View>
     );
   }
@@ -92,8 +65,9 @@ MainScreenNavigator.navigationOptions = {
 
 const mrcup = StackNavigator({
   Home: { screen: MainScreenNavigator },
-  Session: { screen: SessionScreen },
+  Session: { screen: Session },
   Login: { screen: UserAuth },
+  PastLogs: { screen: PastLogs },
 });
 
 AppRegistry.registerComponent('mrcup', () => mrcup);
