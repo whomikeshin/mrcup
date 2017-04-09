@@ -3,8 +3,9 @@ import {
   AppRegistry,
   Text,
   View,
+  StyleSheet,
   Button,
-  SytleSheet,
+  Image,
 } from 'react-native';
 
 import {
@@ -20,20 +21,30 @@ class StartScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View>
-        <Text>Welcome!</Text>
-        <Button
-          onPress={() => navigate('Login')}
-          title="Log In"
-          />
-        <Button
-          onPress={() => navigate('Session', { name: 'Arabica' })}
-          title="Start Cupping"
+      <View style={styles.container}>
+        <Image
+          source={require('./app/assets/images/header.png')}
+          style={styles.image}
         />
-        <Button
-          onPress={() => navigate('PastLogs')}
-          title="Past Logs"
-        />
+      <Text style={styles.header}>Welcome!</Text>
+        <Text style={styles.text}>Big solutions for small roasters</Text>
+        <View style={styles.buttons}>
+          <Button
+            onPress={() => navigate('Login')}
+            title="Sign In"
+            style={styles.button}
+            />
+          <Button
+            onPress={() => navigate('Session', { name: 'Arabica' })}
+            title="Start Cupping"
+            style={styles.button}
+            />
+          <Button
+            onPress={() => navigate('PastLogs')}
+            title="Past Logs"
+            style={styles.button}
+            />
+        </View>
       </View>
     );
   }
@@ -60,7 +71,7 @@ const MainScreenNavigator = TabNavigator({
 });
 
 MainScreenNavigator.navigationOptions = {
-  title: 'CUFFEE',
+  title: 'Home',
 };
 
 const mrcup = StackNavigator({
@@ -68,6 +79,35 @@ const mrcup = StackNavigator({
   Session: { screen: Session },
   Login: { screen: UserAuth },
   PastLogs: { screen: PastLogs },
+});
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    // justifyContent: 'center', // aligns center on main axis
+    alignItems: 'center',
+    // backgroundColor: '#4E2A2A'
+  },
+  image: {
+    width: 375,
+    height: 200,
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  text: {
+    marginTop: 5,
+  },
+  buttons: {
+    flex: 1,
+    marginTop: 20,
+  },
+  button: {
+    marginTop: 10,
+  },
 });
 
 AppRegistry.registerComponent('mrcup', () => mrcup);
