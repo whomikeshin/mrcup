@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Button,
   Image,
+  TouchableHighlight,
 } from 'react-native';
 
 import {
@@ -26,24 +27,24 @@ class StartScreen extends React.Component {
           source={require('./app/assets/images/header.png')}
           style={styles.image}
         />
-      <Text style={styles.header}>Welcome!</Text>
+        <Text style={styles.header}>Welcome!</Text>
         <Text style={styles.text}>Big solutions for small roasters</Text>
         <View style={styles.buttons}>
           <Button
-            onPress={() => navigate('Login')}
+            onPress={() => navigate('SignIn')}
             title="Sign In"
             style={styles.button}
-            />
+          />
           <Button
             onPress={() => navigate('Session', { name: 'Arabica' })}
             title="Start Cupping"
             style={styles.button}
-            />
+          />
           <Button
             onPress={() => navigate('PastLogs')}
             title="Past Logs"
             style={styles.button}
-            />
+          />
         </View>
       </View>
     );
@@ -57,8 +58,8 @@ class AccountScreen extends React.Component {
       <View>
         <Text>Account Info</Text>
           <Button
-            onPress={() => navigate('Login')}
-            title="Login"
+            onPress={() => navigate('SignIn')}
+            title="SignIn"
           />
       </View>
     );
@@ -77,7 +78,7 @@ MainScreenNavigator.navigationOptions = {
 const mrcup = StackNavigator({
   Home: { screen: MainScreenNavigator },
   Session: { screen: Session },
-  Login: { screen: UserAuth },
+  SignIn: { screen: UserAuth },
   PastLogs: { screen: PastLogs },
 });
 
@@ -107,6 +108,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 10,
+    color: 'white'
   },
 });
 

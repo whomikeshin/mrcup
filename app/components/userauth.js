@@ -7,46 +7,57 @@ import {
   TextInput,
   Button,
   Alert,
+  Image,
 } from 'react-native';
 
 const onButtonPress = () => {
   Alert.alert('Button pressed!');
 };
 
+const url = '/api/session'
+
 export default class UserAuth extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'Username',
-      password: 'Password',
+      username: '',
+      password: '',
     };
+  }
+
+  fetchUser(obj) {
+    fetch(url, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': token
+      }
+    });
   }
 
   render() {
     return (
       <View style={styles.containter}>
-        <View style={styles.header}>
-          <Text style={styles.text}>
-            CUPFEE
-          </Text>
-        </View>
-        <View style={styles.body}>
-          <TextInput
-            style={styles.input}
-            onChangeText={(value) => this.setState(value)}
-            value={this.state.username}
-            />
-          <TextInput
-            style={styles.input}
-            onChangeText={(value) => this.setState(value)}
-            value={this.state.password}
-            />
-          <Button
-            style={styles.button}
-            onPress={onButtonPress}
-            title="Login"
-            />
-        </View>
+        <Image
+          source={require('../assets/images/header.png')}
+          style={styles.image}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          onChangeText={(username) => this.setState({username})}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          onChangeText={(password) => this.setState({password})}
+        />
+        <Button
+          style={styles.button}
+          onPress={onButtonPress}
+          title="Login"
+        />
       </View>
     );
   }
@@ -55,37 +66,31 @@ export default class UserAuth extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  header: {
-    flex: 2,
-    backgroundColor: '#593C1F',
-    width: '100%',
-    maxHeight: 200,
     flexDirection: 'column',
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'center'
   },
-  text: {
-    fontSize: 48,
-    color: 'white',
-    fontWeight: 'bold',
-    margin: 20,
-  },
-  body: {
-    flex: 2,
+  image: {
+    width: 375,
+    height: 150,
+    marginBottom: 20,
   },
   input: {
     fontSize: 14,
-    textAlign: 'left',
-    backgroundColor: '#f8f8f8',
+    width: 275,
+    alignSelf: 'center',
     height: 40,
     borderColor: 'gray',
-    color: 'gray',
+    color: 'black',
     borderWidth: 1,
     padding: 10,
     margin: 5,
     borderRadius: 5,
+    marginTop: 10,
   },
+  button: {
+    marginTop: 10,
+  }
 });
 
 AppRegistry.registerComponent('UserAuth', () => UserAuth);
