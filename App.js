@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   AppRegistry,
   Text,
@@ -17,6 +17,7 @@ import {
 import Session from './app/components/session';
 import UserAuth from './app/components/userauth';
 import PastLogs from './app/components/pastlogs';
+import Register from './app/components/register';
 
 class StartScreen extends React.Component {
   render() {
@@ -27,7 +28,7 @@ class StartScreen extends React.Component {
           source={require('./app/assets/images/header.png')}
           style={styles.image}
         />
-        <Text style={styles.header}>Welcome!</Text>
+      <Text style={styles.header}>Welcome!</Text>
         <Text style={styles.text}>Big solutions for small roasters</Text>
         <View style={styles.buttons}>
           <Button
@@ -68,7 +69,8 @@ class AccountScreen extends React.Component {
 
 const MainScreenNavigator = TabNavigator({
   Start: { screen: StartScreen },
-  Account: { screen: AccountScreen},
+  // Account: { screen: AccountScreen},
+  Register: { screen: Register },
 });
 
 MainScreenNavigator.navigationOptions = {

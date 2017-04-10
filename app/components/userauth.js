@@ -46,12 +46,13 @@ export default class UserAuth extends Component {
         <TextInput
           style={styles.input}
           placeholder="Username"
-          onChangeText={(username) => this.setState({username})}
+          onChangeText={(text) => this.setState({username: text})}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
-          onChangeText={(password) => this.setState({password})}
+          onChangeText={(text) => this.setState({password: text})}
+          secureTextEntry={true}
         />
         <Button
           style={styles.button}
