@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
 
 });
 
-AppRegistry.registerComponent('Session', () => Session);
+// AppRegistry.registerComponent('Session', () => Session);

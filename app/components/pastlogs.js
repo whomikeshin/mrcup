@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
 
 });
 
-AppRegistry.registerComponent('PastLogs', () => PastLogs);
+// AppRegistry.registerComponent('PastLogs', () => PastLogs);

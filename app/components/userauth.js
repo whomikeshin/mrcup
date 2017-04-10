@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('UserAuth', () => UserAuth);
+// AppRegistry.registerComponent('UserAuth', () => UserAuth);

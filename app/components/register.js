@@ -4,13 +4,13 @@ import {
   TextInput,
   TouchableHighlight,
   AsyncStorage,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
   Text,
   View,
   AppRegistry,
 } from 'react-native';
 
-const ACCESS_TOKEN = 'access_token'; //session_town
+const SESSION_TOKEN = 'session_token';
 
 export default class Register extends Component {
   constructor(){
@@ -21,7 +21,7 @@ export default class Register extends Component {
       password: '',
       password_confirmation: '',
       errors: [],
-      showProgress: false
+      showProgress: false,
     };
   }
 
@@ -33,7 +33,7 @@ export default class Register extends Component {
 
   async storeToken(accessToken) {
     try {
-      await AsyncStore.setItem(ACCESS_TOKEN, accessToken);
+      await AsyncStore.setItem(SESSION_TOKEN, accessToken);
       console.log("Token was stored successfully");
     } catch(error) {
       console.log("Something went wrong");
@@ -55,7 +55,7 @@ export default class Register extends Component {
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            password_confirmation: this.state.password_confirmation,
+            // password_confirmation: this.state.password_confirmation,
           }
         })
       });
@@ -86,27 +86,27 @@ export default class Register extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.heading}>
+        <Text style={styles.header}>
           Register now!
         </Text>
         <TextInput
-          onChangeText={(email) => this.setState({email: text}) }
+          onChangeText={(text) => this.setState({email: text}) }
           style={styles.input}
           placeholder="Email">
         </TextInput>
         <TextInput
-          onChangeText={(username) => this.setState({username: text}) }
+          onChangeText={(text) => this.setState({username: text}) }
           style={styles.input}
           placeholder="Username">
         </TextInput>
         <TextInput
-          onChangeText={(password) => this.setState({password: text}) }
+          onChangeText={(text) => this.setState({password: text}) }
           style={styles.input}
           placeholder="Password"
           secureTextEntry={true}>
         </TextInput>
         <TextInput
-          onChangeText={(password_confirmation) => this.setState({password_confirmation: text}) }
+          onChangeText={(text) => this.setState({password_confirmation: text}) }
           style={styles.input}
           placeholder="Confirm Password"
           secureTextEntry={true}>
@@ -117,68 +117,69 @@ export default class Register extends Component {
           Register
         </Text>
         </TouchableHighlight>
-
-        <Errors errors={this.state.errors}/>
-
-        <ActivityIndicatorIOS
-          animating={this.state.showProgress}
-          size='large'
-          style={styles.loader}
-        />
       </View>
+
+        // <Errors errors={this.state.errors}/>
+
+        // <ActivityIndicator
+        //   animating={this.state.showProgress}
+        //   size='large'
+        //   style={styles.loader}
+        // />
     );
   }
 }
 
-const Errors = (props) => {
-  return (
-    <View>
-      {props.errors.map((error, i) =>
-        <Text key={i} style={styles.error}> {error} </Text>)}
-      )}
-    </View>
-  );
-}
+// const Errors = (props) => {
+//   return (
+//     <View>
+//       {props.errors.map((error, i) => <Text key={i} style={styles.error}> {error} </Text>)}
+//     </View>
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
     padding: 10,
-    paddingTop: 80
   },
   input: {
-    height: 50,
+    height: 40,
+    width: 275,
+    alignSelf: 'center',
     marginTop: 10,
-    padding: 4,
-    fontSize: 18,
+    padding: 10,
+    fontSize: 14,
     borderWidth: 1,
-    borderColor: '#48bbec'
+    borderColor: 'gray',
+    borderRadius: 5,
   },
   button: {
-    height: 50,
-    backgroundColor: '#48BBEC',
-    alignSelf: 'stretch',
+    height: 40,
+    backgroundColor: '#4E2A2A',
+    width: 275,
     marginTop: 10,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderRadius: 5,
   },
   buttonText: {
-    fontSize: 22,
-    color: '#FFF',
+    fontSize: 14,
+    color: 'white',
     alignSelf: 'center'
   },
-  heading: {
-    fontSize: 30,
+  header: {
+    fontSize: 24,
+    marginBottom: 10,
   },
-  error: {
-    color: 'red',
-    paddingTop: 10
-  },
-  loader: {
-    marginTop: 20
-  }
+  // error: {
+  //   color: 'red',
+  //   paddingTop: 10
+  // },
+  // loader: {
+  //   marginTop: 20
+  // }
 });
 
-AppRegistry.registerComponent('Register', () => Register);
+// AppRegistry.registerComponent('Register', () => Register);

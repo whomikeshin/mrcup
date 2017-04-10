@@ -46,6 +46,11 @@ class StartScreen extends React.Component {
             title="Past Logs"
             style={styles.button}
           />
+          <Button
+            onPress={() => navigate('SignUp')}
+            title="Sign Up"
+            style={styles.button}
+          />
         </View>
       </View>
     );
@@ -58,10 +63,10 @@ class AccountScreen extends React.Component {
     return (
       <View>
         <Text>Account Info</Text>
-          <Button
-            onPress={() => navigate('SignIn')}
-            title="Sign In"
-          />
+        <Button
+          onPress={() => navigate('SignOut')}
+          title="Sign Out"
+        />
       </View>
     );
   }
@@ -69,8 +74,8 @@ class AccountScreen extends React.Component {
 
 const MainScreenNavigator = TabNavigator({
   Start: { screen: StartScreen },
-  // Account: { screen: AccountScreen},
-  Register: { screen: Register },
+  Account: { screen: AccountScreen},
+  // Register: { screen: Register },
 });
 
 MainScreenNavigator.navigationOptions = {
@@ -82,6 +87,7 @@ const mrcup = StackNavigator({
   Session: { screen: Session },
   SignIn: { screen: UserAuth },
   PastLogs: { screen: PastLogs },
+  SignUp: { screen: Register },
 });
 
 const styles = StyleSheet.create({
