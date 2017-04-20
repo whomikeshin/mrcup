@@ -20,8 +20,6 @@ export default class Register extends Component {
       username: '',
       password: '',
       password_confirmation: '',
-      errors: [],
-      showProgress: false,
     };
   }
 
@@ -40,6 +38,7 @@ export default class Register extends Component {
     }
   }
 
+// is async necessary
 
   async onRegisterPressed() {
     console.log("pressed")
@@ -92,7 +91,7 @@ export default class Register extends Component {
       this.setState({showProgress: false});
     }
   }
-  
+
   render() {
     return (
       <View style={styles.container}>
@@ -126,6 +125,9 @@ export default class Register extends Component {
         <Text style={styles.buttonText}>
           Register
         </Text>
+        <View key={'messages'}>
+          {this.renderMessages()}
+        </View>
         </TouchableHighlight>
       </View>
 
@@ -137,16 +139,20 @@ export default class Register extends Component {
         //   style={styles.loader}
         // />
     );
+  },
+
+  // https://www.npmjs.com/package/react-native-complex-user-register
+  
+  renderMessages() {
+    if (this.state.messages.length > 0) {
+      let messages = this.state.messages.map((val, key) => {
+        if (val.message) return <Text style={styles.message} key={key}></Text>
+      });
+
+      return messages;
+    }
   }
 }
-
-// const Errors = (props) => {
-//   return (
-//     <View>
-//       {props.errors.map((error, i) => <Text key={i} style={styles.error}> {error} </Text>)}
-//     </View>
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
