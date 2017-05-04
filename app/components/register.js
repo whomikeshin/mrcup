@@ -20,8 +20,8 @@ export default class Register extends Component {
       username: '',
       password: '',
       password_confirmation: '',
-      errors: [],
       showProgress: false,
+      errors: [],
     };
   }
 
@@ -31,8 +31,11 @@ export default class Register extends Component {
     });
   }
 
+  // when an async function is called it returns a Promise
   async storeToken(accessToken) {
+    // try lets you test a block a code for errors
     try {
+      // AsyncStore is undefined
       await AsyncStore.setItem(SESSION_TOKEN, accessToken);
       console.log("Token was stored successfully");
     } catch(error) {
@@ -92,7 +95,7 @@ export default class Register extends Component {
       this.setState({showProgress: false});
     }
   }
-  
+
   render() {
     return (
       <View style={styles.container}>

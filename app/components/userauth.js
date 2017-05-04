@@ -14,8 +14,6 @@ const onButtonPress = () => {
   Alert.alert('Button pressed!');
 };
 
-const url = '/api/session';
-
 export default class UserAuth extends Component {
   constructor(props) {
     super(props);
@@ -25,15 +23,24 @@ export default class UserAuth extends Component {
     };
   }
 
-  fetchUser(obj) {
-    fetch(url, {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': token
-      }
-    });
+  async onPress() {
+    try {
+      let response = await fetch('api/session', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password,
+        })
+      });
+      let responseJson = await response.json();
+      return responseJson;
+    } catch(error) {
+      console.error(error);
+    }
   }
 
   render() {
@@ -47,16 +54,18 @@ export default class UserAuth extends Component {
           style={styles.input}
           placeholder="Username"
           onChangeText={(text) => this.setState({username: text})}
+          autoCapitalize={"none"}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
           onChangeText={(text) => this.setState({password: text})}
           secureTextEntry={true}
+          autoCapitalize={"none"}
         />
         <Button
           style={styles.button}
-          onPress={onButtonPress}
+          onPress={this.onPress.bind(this)}
           title="Log In"
         />
       </View>
