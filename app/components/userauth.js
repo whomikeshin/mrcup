@@ -10,6 +10,8 @@ import {
   Image,
 } from 'react-native';
 
+import ApiUtils from '../utils/ApiUtils';
+
 const onButtonPress = () => {
   Alert.alert('Button pressed!');
 };
@@ -24,8 +26,9 @@ export default class UserAuth extends Component {
   }
 
   async onPress() {
+    console.log("Pressed")
     try {
-      let response = await fetch('api/session', {
+      let response = fetch('api/session', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -36,8 +39,10 @@ export default class UserAuth extends Component {
           password: this.state.password,
         })
       });
-      let responseJson = await response.json();
-      return responseJson;
+      // console.log(response)
+      return response;
+      // let responseJson = await response.json();
+      // return responseJson;
     } catch(error) {
       console.error(error);
     }

@@ -23,7 +23,9 @@ module Api
     end
 
     def show
-      @user = User.find(params[:id])
+      # 5/14 is this correct?
+      @user = User.includes(:cupping_sessions).find(params[:id])
+      # @user = User.includes(:cupping_sessions).where(:id => params[:id]).first
     end
 
     def index

@@ -5,7 +5,7 @@ module Api
     end
 
     def show
-      @cupping_session = CuppingSession.find(params[:id])
+      @cupping_session = CuppingSession.includes(:samples).find(params[:id])
     end
 
     def destroy
@@ -32,7 +32,7 @@ module Api
       @cupping_sessions =
         CuppingSession.all
           .includes(:samples)
-          
+
       render :index
     end
 
