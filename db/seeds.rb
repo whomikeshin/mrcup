@@ -6,12 +6,6 @@ mike = User.create!(
   password: "password",
 )
 
-jin = User.create!(
-  email: "jin@email.com",
-  username: "jin",
-  password: "password"
-)
-
 CuppingSession.destroy_all
 
 session_1 = CuppingSession.create!(

@@ -14,10 +14,10 @@ import {
   TabNavigator,
 } from 'react-navigation';
 
-import Session from './app/components/session';
-import UserAuth from './app/components/userauth';
-import PastLogs from './app/components/pastlogs';
-import Register from './app/components/register';
+import Session from './frontend/components/session';
+import UserAuth from './frontend/components/userauth';
+import PastLogs from './frontend/components/pastlogs';
+import Register from './frontend/components/register';
 
 class StartScreen extends React.Component {
   render() {

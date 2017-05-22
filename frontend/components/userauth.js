@@ -10,11 +10,8 @@ import {
   Image,
 } from 'react-native';
 
-import ApiUtils from '../utils/ApiUtils';
-
-const onButtonPress = () => {
-  Alert.alert('Button pressed!');
-};
+// import ApiUtils from '../util/ApiUtils';
+import ApiUtil from '../util/api_util';
 
 export default class UserAuth extends Component {
   constructor(props) {
@@ -25,34 +22,29 @@ export default class UserAuth extends Component {
     };
   }
 
-  async onPress() {
-    console.log("Pressed")
-    try {
-      let response = fetch('api/session', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: this.state.username,
-          password: this.state.password,
-        })
-      });
-      // console.log(response)
-      return response;
-      // let responseJson = await response.json();
-      // return responseJson;
-    } catch(error) {
+  onPress() {
+    fetch('api/session', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+      })
+    }).then(function(response) {
+      response.json();
+    }).catch(function(error) {
       console.error(error);
-    }
+    });
   }
 
   render() {
     return (
       <View style={styles.containter}>
         <Image
-          source={require('../assets/images/header.png')}
+          source={require('../../app/assets/images/header.png')}
           style={styles.image}
         />
         <TextInput

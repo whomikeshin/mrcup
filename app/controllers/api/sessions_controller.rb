@@ -1,6 +1,7 @@
 module Api
   class SessionsController < ApplicationController
     def create
+      debugger
       @user = User.find_by_credentials(
         params[:username],
         params[:password]
