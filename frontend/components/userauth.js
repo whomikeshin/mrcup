@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 // import ApiUtils from '../util/ApiUtils';
-import ApiUtil from '../util/api_util';
+// import ApiUtil from '../util/api_util';
 
 export default class UserAuth extends Component {
   constructor(props) {
@@ -39,6 +39,14 @@ export default class UserAuth extends Component {
       console.error(error);
     });
   }
+
+  // _handleSubmit(e) {
+  //   e.preventDefault();
+  //
+  //   ApiUtil.login(this.state, function() {
+  //     console.log("logged in");
+  //   });
+  // }
 
   render() {
     return (
