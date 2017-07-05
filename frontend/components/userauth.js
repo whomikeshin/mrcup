@@ -30,16 +30,19 @@ export default class UserAuth extends Component {
     fetch('http://localhost:3000/api/session', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
         'Accept': 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(this.state)
-    }).then(function(response) {
-      // console.log(response);
-      return response.json();
-    }).catch(function(response) {
+    }).then((response) => {
       debugger
-      console.error(response);
+      // return response.json();
+      return response.text();
+    }).then((text) => {
+      console.log("success");
+    }).catch((error) => {
+      debugger
+      console.error(error);
     });
   }
 
