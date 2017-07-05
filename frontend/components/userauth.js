@@ -27,11 +27,11 @@ export default class UserAuth extends Component {
     // data.append("json", JSON.stringify(this.state));
     // console.log(data);
 
-    fetch('api/session', {
+    fetch('http://localhost:3000/api/session', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
       body: JSON.stringify(this.state)
     }).then(function(response) {
