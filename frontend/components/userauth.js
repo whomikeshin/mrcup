@@ -23,16 +23,17 @@ export default class UserAuth extends Component {
   }
 
   onPress() {
-    var data = new FormData();
-    data.append("json", JSON.stringify(this.state));
+    // var data = new FormData();
+    // data.append("json", JSON.stringify(this.state));
+    // console.log(data);
 
-    fetch('/api/session', {
+    fetch('api/session', {
       method: 'POST',
-      // headers: {
-      //   'Accept': 'application/json',
-      //   'Content-Type': 'application/json',
-      // },
-      body: data
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.state)
     }).then(function(response) {
       // console.log(response);
       return response.json();
@@ -41,6 +42,20 @@ export default class UserAuth extends Component {
       console.error(response);
     });
   }
+
+  // onPressTest() {
+  //   fetch('http://facebook.github.io/react-native/movies.json')
+  //     .then((response) => response.json())
+  //     .then((responseJson) => {
+  //       return responseJson.movies;
+  //       console.log("TEST SUCESSFUL")
+  //     })
+  //     .catch((error) => {
+  //       debugger
+  //       console.error(error);
+  //     });
+  // }
+
 
   render() {
     return (
