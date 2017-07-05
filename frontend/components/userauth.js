@@ -23,30 +23,24 @@ export default class UserAuth extends Component {
   }
 
   onPress() {
-    fetch('api/session', {
+    var data = new FormData();
+    data.append("json", JSON.stringify(this.state));
+
+    fetch('/api/session', {
       method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password,
-      })
+      // headers: {
+      //   'Accept': 'application/json',
+      //   'Content-Type': 'application/json',
+      // },
+      body: data
     }).then(function(response) {
-      response.json();
-    }).catch(function(error) {
-      console.error(error);
+      // console.log(response);
+      return response.json();
+    }).catch(function(response) {
+      debugger
+      console.error(response);
     });
   }
-
-  // _handleSubmit(e) {
-  //   e.preventDefault();
-  //
-  //   ApiUtil.login(this.state, function() {
-  //     console.log("logged in");
-  //   });
-  // }
 
   render() {
     return (

@@ -40,10 +40,6 @@
 	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-	</dict>
-	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
