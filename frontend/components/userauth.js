@@ -6,12 +6,8 @@ import {
   View,
   TextInput,
   Button,
-  Alert,
   Image,
 } from 'react-native';
-
-// import ApiUtils from '../util/ApiUtils';
-// import ApiUtil from '../util/api_util';
 
 export default class UserAuth extends Component {
   constructor(props) {
@@ -23,10 +19,6 @@ export default class UserAuth extends Component {
   }
 
   onPress() {
-    // var data = new FormData();
-    // data.append("json", JSON.stringify(this.state));
-    // console.log(data);
-
     fetch('http://localhost:3000/api/session', {
       method: 'POST',
       headers: {
@@ -43,20 +35,6 @@ export default class UserAuth extends Component {
       console.error(error);
     });
   }
-
-  // onPressTest() {
-  //   fetch('http://facebook.github.io/react-native/movies.json')
-  //     .then((response) => response.json())
-  //     .then((responseJson) => {
-  //       return responseJson.movies;
-  //       console.log("TEST SUCESSFUL")
-  //     })
-  //     .catch((error) => {
-  //       debugger
-  //       console.error(error);
-  //     });
-  // }
-
 
   render() {
     return (
