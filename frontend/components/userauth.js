@@ -8,6 +8,7 @@ import {
   View,
   TextInput,
   Button,
+  Alert,
   Image,
 } from 'react-native';
 
@@ -20,7 +21,7 @@ export default class UserAuth extends Component {
     };
   }
 
-  onPress() {
+  login() {
     fetch('http://localhost:3000/api/session', {
       method: 'POST',
       headers: {
@@ -32,6 +33,8 @@ export default class UserAuth extends Component {
       // return response.json();
       return response.text();
     }).then((text) => {
+      // M: success works but it doesn't hit debugger in SessionsController
+      // M: where to redirect?
       console.log("success");
     }).catch((error) => {
       console.error(error);
@@ -39,6 +42,7 @@ export default class UserAuth extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.containter}>
         <Image
@@ -60,8 +64,13 @@ export default class UserAuth extends Component {
         />
         <Button
           style={styles.button}
-          onPress={this.onPress.bind(this)}
+          onPress={this.login.bind(this)}
           title="Log In"
+        />
+        <Button
+          style={styles.button}
+          onPress={() => navigate('Session', {username: this.state.username})}
+          title="Redirect"
         />
       </View>
     );

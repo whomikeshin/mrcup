@@ -39,7 +39,7 @@ class StartScreen extends React.Component {
             style={styles.button}
           />
           <Button
-            onPress={() => navigate('Session', { name: 'Arabica' })}
+            onPress={() => navigate('Session', { name: 'Arabica', userName: '' })}
             title="Start Cupping"
             style={styles.button}
           />
@@ -86,7 +86,10 @@ MainScreenNavigator.navigationOptions = {
 
 const mrcup = StackNavigator({
   Home: { screen: MainScreenNavigator },
-  Session: { screen: Session },
+  Session: {
+    screen: Session,
+    path: 'users/:id',
+  },
   SignIn: { screen: UserAuth },
   PastLogs: { screen: PastLogs },
   SignUp: { screen: Register },

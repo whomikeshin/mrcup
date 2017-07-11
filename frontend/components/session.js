@@ -45,7 +45,8 @@ export default class Session extends Component {
     const { params } = this.props.navigation.state;
     return (
       <View>
-        <Text>{params.name} cupping session</Text>
+        <Text>Welcome {params.username}</Text>
+        <Text>Sample 1: {params.name}</Text>
       </View>
     );
   }
