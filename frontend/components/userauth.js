@@ -35,13 +35,11 @@ export default class UserAuth extends Component {
       },
       body: JSON.stringify(this.state)
     }).then((response) => {
-      debugger
       // return response.json();
       return response.text();
     }).then((text) => {
       console.log("success");
     }).catch((error) => {
-      debugger
       console.error(error);
     });
   }
