@@ -28,14 +28,10 @@ export default class UserAuth extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(this.state)
-    }).then((response) => {
-      // return response.json();
-      return response.text();
-    }).then((text) => {
-      // M: success works but it doesn't hit debugger in SessionsController
-      // M: where to redirect?
-      console.log("success");
+      body: JSON.stringify(this.state)})
+      .then((response) => response.json())
+      .then((jsonResponse) => {
+      console.log(jsonResponse);
     }).catch((error) => {
       console.error(error);
     });

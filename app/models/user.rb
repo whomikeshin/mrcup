@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates :username, :email, :session_token, uniqueness: true
   validates_format_of :email, with: /@/
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6, allow_nil: true }
   validates :username, :email, :password_digest, :session_token, presence: true
 
   ######  ASSOCIATIONS  ######
