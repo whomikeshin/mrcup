@@ -22,6 +22,7 @@ export default class UserAuth extends Component {
   }
 
   login() {
+    const { navigate } = this.props.navigation;
     fetch('http://localhost:3000/api/session', {
       method: 'POST',
       headers: {
@@ -30,15 +31,13 @@ export default class UserAuth extends Component {
       },
       body: JSON.stringify(this.state)})
       .then((response) => response.json())
-      .then((jsonResponse) => {
-      console.log(jsonResponse);
-    }).catch((error) => {
+      .then((data) => navigate('Session', {username: data.username}))
+      .catch((error) => {
       console.error(error);
     });
   }
 
   render() {
-    const { navigate } = this.props.navigation;
     return (
       <View style={styles.containter}>
         <Image
@@ -62,11 +61,6 @@ export default class UserAuth extends Component {
           style={styles.button}
           onPress={this.login.bind(this)}
           title="Log In"
-        />
-        <Button
-          style={styles.button}
-          onPress={() => navigate('Session', {username: this.state.username})}
-          title="Redirect"
         />
       </View>
     );
