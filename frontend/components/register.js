@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -8,6 +10,8 @@ import {
   Text,
   View,
   AppRegistry,
+  Alert,
+  Button
 } from 'react-native';
 
 const SESSION_TOKEN = 'session_token';
@@ -19,80 +23,26 @@ export default class Register extends Component {
       email: '',
       username: '',
       password: '',
-      password_confirmation: '',
-      showProgress: false,
-      errors: [],
+      confirmation: '',
     };
   }
 
-  redirect(routeName, accessToken){
-    this.props.navigator.push({
-      name: routeName
-    });
-  }
-
-  // when an async function is called it returns a Promise
-  async storeToken(accessToken) {
-    // try lets you test a block a code for errors
-    try {
-      // AsyncStore is undefined
-      await AsyncStore.setItem(SESSION_TOKEN, accessToken);
-      console.log("Token was stored successfully");
-    } catch(error) {
-      console.log("Something went wrong");
-    }
-  }
-
-
-  async onRegisterPressed() {
-    console.log("pressed")
-    this.setState({
-      showProgress: true
-    })
-
-    let myHeaders = new Headers({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    });
-
-    try {
-      let response = await fetch('api/users', {
-        method: 'post',
-        headers: myHeaders,
-        body: JSON.stringify({
-          user: {
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password,
-          }
-        })
+  register() {
+    const { navigate } = this.props.navigation;
+    if (this.state.password !== this.state.confirmation) {
+      Alert.alert("Password confrimation does not match Password");
+    } else {
+      fetch('http://localhost:3000/api/users', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.state)
+      }).then((response) => response.json())
+        .then((data) => navigate('Session', { username: data.username }))
+        .catch((error) => { console.error(error);
       });
-
-      console.log(response)
-
-      let res = await response.text();
-
-      if (response.status >= 200 && response.status < 300) {
-        let accessToken = res;
-        console.log(accessToken);
-        this.storeToken(accessToken);
-        this.redirect('Home');
-      } else {
-        let error = res;
-        throw error;
-      }
-    } catch(errors) {
-      let formErrors = JSON.parse(errors);
-      let errorsArray = [];
-      for (var key in formErrors) {
-        if (formErrors[key].length > 1) {
-          formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
-        } else {
-          errorsArray.push(`${key} ${formErrors[key]}`);
-        }
-      }
-      this.setState({errors: errorsArray})
-      this.setState({showProgress: false});
     }
   }
 
@@ -105,51 +55,37 @@ export default class Register extends Component {
         <TextInput
           onChangeText={(text) => this.setState({email: text}) }
           style={styles.input}
-          placeholder="Email">
-        </TextInput>
+          placeholder="Email"
+          autoCapitalize={"none"}
+        />
         <TextInput
           onChangeText={(text) => this.setState({username: text}) }
           style={styles.input}
-          placeholder="Username">
-        </TextInput>
+          placeholder="Username"
+          autoCapitalize={"none"}
+        />
         <TextInput
           onChangeText={(text) => this.setState({password: text}) }
           style={styles.input}
           placeholder="Password"
-          secureTextEntry={true}>
-        </TextInput>
+          secureTextEntry={true}
+          autoCapitalize={"none"}
+        />
         <TextInput
-          onChangeText={(text) => this.setState({password_confirmation: text}) }
+          onChangeText={(text) => this.setState({confirmation: text}) }
           style={styles.input}
           placeholder="Confirm Password"
-          secureTextEntry={true}>
-        </TextInput>
-        <TouchableHighlight
-          onPress={this.onRegisterPressed.bind(this)} style={styles.button}>
-        <Text style={styles.buttonText}>
-          Register
-        </Text>
-        </TouchableHighlight>
+          secureTextEntry={true}
+          autoCapitalize={"none"}
+        />
+        <Button
+          onPress={this.register.bind(this)}
+          title={'Sign Up'}
+        />
       </View>
-
-        // <Errors errors={this.state.errors}/>
-
-        // <ActivityIndicator
-        //   animating={this.state.showProgress}
-        //   size='large'
-        //   style={styles.loader}
-        // />
     );
   }
 }
-
-// const Errors = (props) => {
-//   return (
-//     <View>
-//       {props.errors.map((error, i) => <Text key={i} style={styles.error}> {error} </Text>)}
-//     </View>
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
@@ -159,14 +95,14 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   input: {
-    height: 40,
-    width: 275,
-    alignSelf: 'center',
-    marginTop: 10,
-    padding: 10,
     fontSize: 14,
-    borderWidth: 1,
+    width: 275,
+    height: 40,
+    alignSelf: 'center',
     borderColor: 'gray',
+    padding: 10,
+    marginTop: 10,
+    borderWidth: 1,
     borderRadius: 5,
   },
   button: {
@@ -185,14 +121,5 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24,
     marginBottom: 10,
-  },
-  // error: {
-  //   color: 'red',
-  //   paddingTop: 10
-  // },
-  // loader: {
-  //   marginTop: 20
-  // }
+  }
 });
-
-// AppRegistry.registerComponent('Register', () => Register);

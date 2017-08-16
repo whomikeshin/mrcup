@@ -8712,3 +8712,53 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 91ms (Views: 6.1ms | ActiveRecord: 3.1ms)
 
 
+Started POST "/api/session" for 127.0.0.1 at 2017-08-16 18:35:04 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (3.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"username"=>"mike", "password"=>"[FILTERED]", "session"=>{"username"=>"mike", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["username", "mike"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "mike@email.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["session_token", "xYzO1nm6lNf4l5nwqTfqGQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (3.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "xYzO1nm6lNf4l5nwqTfqGQ"], ["updated_at", "2017-08-16 22:35:05.541122"], ["id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  [1m[36mCuppingSession Load (2.2ms)[0m  [1m[34mSELECT "cupping_sessions".* FROM "cupping_sessions" WHERE "cupping_sessions"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered api/users/show.json.jbuilder (41.2ms)
+Completed 200 OK in 196ms (Views: 45.0ms | ActiveRecord: 35.7ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2017-08-16 18:50:06 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"username"=>"", "password"=>"[FILTERED]", "session"=>{"username"=>"", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+Completed 401 Unauthorized in 10ms (Views: 1.7ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2017-08-16 19:06:06 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"email"=>"guest@email.com", "username"=>"guest", "password"=>"[FILTERED]", "confirmation"=>"password", "user"=>{"email"=>"guest@email.com", "username"=>"guest"}}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "guest"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "eTpoqEKKzRBqqlGma5ukDw"], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 37ms (Views: 0.8ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2017-08-16 19:10:44 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"email"=>"shin@email.com", "username"=>"guest", "password"=>"[FILTERED]", "user"=>{"email"=>"shin@email.com", "username"=>"guest"}}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "guest"], ["LIMIT", 1]]
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shin@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "1p1b-Lxn_bNKAQLt2mXTIA"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 9ms (Views: 0.3ms | ActiveRecord: 3.1ms)
+
+

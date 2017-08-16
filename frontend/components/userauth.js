@@ -10,6 +10,7 @@ import {
   Button,
   Alert,
   Image,
+  TouchableHighlight
 } from 'react-native';
 
 export default class UserAuth extends Component {
@@ -29,11 +30,10 @@ export default class UserAuth extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(this.state)})
-      .then((response) => response.json())
-      .then((data) => navigate('Session', {username: data.username}))
-      .catch((error) => {
-      console.error(error);
+      body: JSON.stringify(this.state)
+    }).then((response) => response.json())
+      .then((data) => navigate('Session', { username: data.username }))
+      .catch((error) => { console.error(error);
     });
   }
 
@@ -58,9 +58,8 @@ export default class UserAuth extends Component {
           autoCapitalize={"none"}
         />
         <Button
-          style={styles.button}
           onPress={this.login.bind(this)}
-          title="Log In"
+          title={'Login'}
         />
       </View>
     );
@@ -70,9 +69,9 @@ export default class UserAuth extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    justifyContent: 'center',
+    padding: 10,
   },
   image: {
     width: 375,
@@ -82,19 +81,25 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 14,
     width: 275,
-    alignSelf: 'center',
     height: 40,
+    alignSelf: 'center',
     borderColor: 'gray',
-    color: 'black',
-    borderWidth: 1,
     padding: 10,
-    margin: 5,
-    borderRadius: 5,
     marginTop: 10,
+    borderWidth: 1,
+    borderRadius: 5,
   },
   button: {
+    height: 40,
+    backgroundColor: '#4E2A2A',
+    width: 275,
     marginTop: 10,
-  }
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 14,
+    color: 'white',
+    alignSelf: 'center'
+  },
 });
-
-// AppRegistry.registerComponent('UserAuth', () => UserAuth);
