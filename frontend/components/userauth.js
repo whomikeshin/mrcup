@@ -32,7 +32,8 @@ export default class UserAuth extends Component {
       },
       body: JSON.stringify(this.state)
     }).then((response) => response.json())
-      .then((data) => navigate('Session', { username: data.username }))
+      .then((data) => navigate('Session', {
+        username: data.username, sessions: data.cupping_sessions }))
       .catch((error) => { console.error(error);
     });
   }
