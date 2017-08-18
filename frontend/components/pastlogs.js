@@ -13,9 +13,11 @@ import {
 
 export default class PastLogs extends Component {
   render() {
+    const { params } = this.props.navigation.state;
     return (
       <View>
         <Text>Past Logs</Text>
+        <Text>Welcome {params.username}!</Text>
       </View>
     );
   }

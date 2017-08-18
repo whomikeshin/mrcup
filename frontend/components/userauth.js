@@ -32,8 +32,8 @@ export default class UserAuth extends Component {
       },
       body: JSON.stringify(this.state)
     }).then((response) => response.json())
-      .then((data) => navigate('Session', {
-        username: data.username, sessions: data.cupping_sessions }))
+      .then((data) => navigate('PastLogs', {
+        username: data.username, cupping_sessions: data.cupping_sessions }))
       .catch((error) => { console.error(error);
     });
   }

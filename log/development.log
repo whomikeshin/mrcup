@@ -9372,3 +9372,123 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 124ms (Views: 12.6ms | ActiveRecord: 5.3ms)
 
 
+Started POST "/api/session" for 127.0.0.1 at 2017-08-18 12:34:02 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"username"=>"mike", "password"=>"[FILTERED]", "session"=>{"username"=>"mike", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["username", "mike"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "mike@email.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["session_token", "9sggZbdtdSBu78QnrOEM9Q"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "9sggZbdtdSBu78QnrOEM9Q"], ["updated_at", "2017-08-18 16:34:02.780792"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  [1m[36mCuppingSession Load (1.1ms)[0m  [1m[34mSELECT "cupping_sessions".* FROM "cupping_sessions" WHERE "cupping_sessions"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered api/users/show.json.jbuilder (37.4ms)
+Completed 200 OK in 188ms (Views: 41.7ms | ActiveRecord: 26.7ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2017-08-18 12:41:07 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"username"=>"mike", "password"=>"[FILTERED]", "session"=>{"username"=>"mike", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["username", "mike"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "mike@email.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["session_token", "4a3rjHZ2YeZV5jhDiIJ1_A"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "4a3rjHZ2YeZV5jhDiIJ1_A"], ["updated_at", "2017-08-18 16:41:07.825346"], ["id", 1]]
+  [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  [1m[36mCuppingSession Load (0.5ms)[0m  [1m[34mSELECT "cupping_sessions".* FROM "cupping_sessions" WHERE "cupping_sessions"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered api/users/show.json.jbuilder (8.4ms)
+Completed 200 OK in 125ms (Views: 15.5ms | ActiveRecord: 13.9ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2017-08-18 12:43:45 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"username"=>"mike", "password"=>"[FILTERED]", "session"=>{"username"=>"mike", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["username", "mike"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "mike@email.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["session_token", "14mTVfgy8KPmNpvv0_vkGQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "14mTVfgy8KPmNpvv0_vkGQ"], ["updated_at", "2017-08-18 16:43:45.821549"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  [1m[36mCuppingSession Load (0.8ms)[0m  [1m[34mSELECT "cupping_sessions".* FROM "cupping_sessions" WHERE "cupping_sessions"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered api/users/show.json.jbuilder (5.2ms)
+Completed 200 OK in 94ms (Views: 8.9ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2017-08-18 12:45:53 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"username"=>"mike", "password"=>"[FILTERED]", "session"=>{"username"=>"mike", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["username", "mike"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "mike@email.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["session_token", "xLnMkFJnzNLv07-gaUwT-g"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "xLnMkFJnzNLv07-gaUwT-g"], ["updated_at", "2017-08-18 16:45:53.642961"], ["id", 1]]
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  [1m[36mCuppingSession Load (0.3ms)[0m  [1m[34mSELECT "cupping_sessions".* FROM "cupping_sessions" WHERE "cupping_sessions"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered api/users/show.json.jbuilder (3.1ms)
+Completed 200 OK in 97ms (Views: 9.9ms | ActiveRecord: 11.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2017-08-18 12:47:55 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"username"=>"mike", "password"=>"[FILTERED]", "session"=>{"username"=>"mike", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["username", "mike"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "mike@email.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["session_token", "MJ_C7YgZ5pfaIXltfACgAQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "MJ_C7YgZ5pfaIXltfACgAQ"], ["updated_at", "2017-08-18 16:47:55.234003"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  [1m[36mCuppingSession Load (0.3ms)[0m  [1m[34mSELECT "cupping_sessions".* FROM "cupping_sessions" WHERE "cupping_sessions"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered api/users/show.json.jbuilder (3.5ms)
+Completed 200 OK in 89ms (Views: 8.7ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2017-08-18 12:49:09 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"username"=>"mike", "password"=>"[FILTERED]", "session"=>{"username"=>"mike", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["username", "mike"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "mike@email.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["session_token", "X009zHcdzO1d4Pw-fqL0uQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "X009zHcdzO1d4Pw-fqL0uQ"], ["updated_at", "2017-08-18 16:49:09.516236"], ["id", 1]]
+  [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  [1m[36mCuppingSession Load (0.3ms)[0m  [1m[34mSELECT "cupping_sessions".* FROM "cupping_sessions" WHERE "cupping_sessions"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered api/users/show.json.jbuilder (3.0ms)
+Completed 200 OK in 107ms (Views: 10.3ms | ActiveRecord: 12.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2017-08-18 12:49:55 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"username"=>"mike", "password"=>"[FILTERED]", "session"=>{"username"=>"mike", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "mike"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["username", "mike"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "mike@email.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["session_token", "4_ZpEsRnsx5uZHriiMiwlg"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "4_ZpEsRnsx5uZHriiMiwlg"], ["updated_at", "2017-08-18 16:49:55.351833"], ["id", 1]]
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  [1m[36mCuppingSession Load (0.3ms)[0m  [1m[34mSELECT "cupping_sessions".* FROM "cupping_sessions" WHERE "cupping_sessions"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered api/users/show.json.jbuilder (2.8ms)
+Completed 200 OK in 97ms (Views: 8.7ms | ActiveRecord: 10.8ms)
+
+
