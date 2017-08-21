@@ -19,6 +19,7 @@ import Session from './frontend/components/session';
 import UserAuth from './frontend/components/userauth';
 import PastLogs from './frontend/components/pastlogs';
 import Register from './frontend/components/register';
+import Advanced from './frontend/components/advanced';
 
 class StartScreen extends React.Component {
   render() {
@@ -92,6 +93,7 @@ const mrcup = StackNavigator({
   SignIn: { screen: UserAuth },
   PastLogs: { screen: PastLogs },
   SignUp: { screen: Register },
+  Advanced: { screen: Advanced },
 });
 
 const styles = StyleSheet.create({

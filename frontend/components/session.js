@@ -18,39 +18,14 @@ export default class Session extends Component {
     super(props);
     this.state = {
       name: '',
-      samples: '1',
-      cups: '1',
+      sampleCount: '1',
+      cupCount: '1',
     };
   }
 
-  // static navigationOptions = {
-  //   title: ({ state }) => {
-  //     if (state.params.mode === 'info') {
-  //       return 'Advanced';
-  //     }
-  //     return 'Cupping Session';
-  //   },
-  //   header: ({ state, setParams }) => {
-  //     let right = (
-  //       <Button
-  //         title='Advanced'
-  //         onPress={() => setParams({ mode: 'info' })}
-  //       />
-  //     );
-  //     if (state.params.mode === 'info') {
-  //       right = (
-  //         <Button
-  //           title="Done"
-  //           onPress={() => setParams({ mode: 'none' })}
-  //         />
-  //       );
-  //     }
-  //     return { right };
-  //   },
-  // };
-
   render() {
     const { params } = this.props.navigation.state;
+    const { navigate } = this.props.navigation;
     const date = new Date();
     return (
       <View style={styles.container}>
@@ -61,31 +36,36 @@ export default class Session extends Component {
           onChangeText={(text) => this.setState({name: text})}
           autoCapitalize={"none"}
         />
-      <Text>Samples</Text>
-      <Stars
-        rating={1}
-        update={(val)=>{this.setState({samples: val})}}
-        spacing={10}
-        starSize={40}
-        count={5}
-        fullStar={require('../../app/assets/images/coffee_bean_full.png')}
-        emptyStar={require('../../app/assets/images/coffee_bean_empty.png')}
-      />
-      <Text>Cups</Text>
+      <Text style={styles.header}>Samples</Text>
         <Stars
           rating={1}
-          update={(val)=>{this.setState({cups: val})}}
+          update={(val)=>{this.setState({sampleCount: val})}}
+          spacing={10}
+          starSize={40}
+          count={5}
+          fullStar={require('../../app/assets/images/coffee_bean_full.png')}
+          emptyStar={require('../../app/assets/images/coffee_bean_empty.png')}
+        />
+      <Text style={styles.header}>Cups</Text>
+        <Stars
+          rating={1}
+          update={(val)=>{this.setState({cupCount: val})}}
           spacing={10}
           starSize={40}
           count={5}
           fullStar={require('../../app/assets/images/cup_full.png')}
           emptyStar={require('../../app/assets/images/cup_empty.png')}
         />
+      <Button
+        onPress={() => navigate('Advanced', {
+          sampleCount: this.state.sampleCount, cupCount: this.state.cupCount
+        })}
+        title={'Advanced'}
+      />
       </View>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -104,6 +84,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderWidth: 1,
     borderRadius: 5,
+  },
+  header: {
+    marginTop: 15,
+    marginBottom: 10,
   },
 });
 
