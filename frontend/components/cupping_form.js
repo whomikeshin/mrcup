@@ -9,6 +9,7 @@ import {
   TextInput,
   Button,
   Alert,
+  ScrollView,
 } from 'react-native';
 
 export default class CuppingForm extends Component {
@@ -17,6 +18,13 @@ export default class CuppingForm extends Component {
   }
 
   render() {
-    return ();
+    const { navigate } = this.props.navigation;
+    return (
+      <ScrollView>
+        <Text>
+          Cupping Form
+        </Text>
+      </ScrollView>
+    );
   }
 }

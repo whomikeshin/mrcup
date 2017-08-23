@@ -21,10 +21,12 @@ export default class Advanced extends Component {
       sampleCount: params.sampleCount,
       cupCount: params.cupCount,
       blind: false,
+      samples: [],
     };
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     let sampleCount = parseInt(this.state.sampleCount);
     return (
       <View>
@@ -53,7 +55,14 @@ export default class Advanced extends Component {
         <Text>Blind?</Text>
         <Switch
           onValueChange={(value) => this.setState({blind: value})}
-          value={this.state.blind} />
+          value={this.state.blind}
+        />
+      <Button
+        onPress={() => navigate('CuppingForm', {
+          sampleName1: this.state.samples[0], sampleName2: this.state.samples[1]
+        })}
+        title={'CuppingForm'}
+      />
       </View>
     );
   }

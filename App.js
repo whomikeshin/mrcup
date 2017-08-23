@@ -20,6 +20,7 @@ import UserAuth from './frontend/components/userauth';
 import PastLogs from './frontend/components/pastlogs';
 import Register from './frontend/components/register';
 import Advanced from './frontend/components/advanced';
+import CuppingForm from './frontend/components/cupping_form';
 
 class StartScreen extends React.Component {
   render() {
@@ -94,6 +95,7 @@ const mrcup = StackNavigator({
   PastLogs: { screen: PastLogs },
   SignUp: { screen: Register },
   Advanced: { screen: Advanced },
+  CuppingForm: { screen: CuppingForm },
 });
 
 const styles = StyleSheet.create({
