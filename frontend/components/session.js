@@ -39,7 +39,7 @@ export default class Session extends Component {
       <Text style={styles.header}>Samples</Text>
         <Stars
           rating={1}
-          update={(val)=>{this.setState({sampleCount: val})}}
+          update={(value)=>{this.setState({sampleCount: value})}}
           spacing={10}
           starSize={40}
           count={5}
@@ -49,7 +49,7 @@ export default class Session extends Component {
       <Text style={styles.header}>Cups</Text>
         <Stars
           rating={1}
-          update={(val)=>{this.setState({cupCount: val})}}
+          update={(value)=>{this.setState({cupCount: value})}}
           spacing={10}
           starSize={40}
           count={5}
