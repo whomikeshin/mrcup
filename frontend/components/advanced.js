@@ -38,31 +38,31 @@ export default class Advanced extends Component {
           starSize={40}
           count={5}
           fullStar={require('../../app/assets/images/cup_full.png')}
-          emptyStar={require('../../app/assets/images/cup_empty.png')}
-        />
+          emptyStar={require('../../app/assets/images/cup_empty.png')}>
+        </Stars>
         <View>
           <TextInput
             style={styles.input}
             placeholder={"Sample 1"}
-            autoCapitalize={"none"}
-          />
+            autoCapitalize={"none"}>
+          </TextInput>
           <TextInput
             style={styles.input}
             placeholder={"Sample 2"}
-            autoCapitalize={"none"}
-          />
+            autoCapitalize={"none"}>
+          </TextInput>
         </View>
         <Text>Blind?</Text>
         <Switch
           onValueChange={(value) => this.setState({blind: value})}
-          value={this.state.blind}
-        />
+          value={this.state.blind}>
+        </Switch>
       <Button
         onPress={() => navigate('CuppingForm', {
           sampleName1: this.state.samples[0], sampleName2: this.state.samples[1]
         })}
-        title={'CuppingForm'}
-      />
+        title={'CuppingForm'}>
+      </Button>
       </View>
     );
   }
