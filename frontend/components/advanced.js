@@ -30,33 +30,34 @@ export default class Advanced extends Component {
     let sampleCount = parseInt(this.state.sampleCount);
     return (
       <View>
-        <Text>Cups</Text>
-        <Stars
-          rating={this.state.cupCount}
-          update={(value)=>{this.setState({cupCount: value})}}
-          spacing={10}
-          starSize={40}
-          count={5}
-          fullStar={require('../../app/assets/images/cup_full.png')}
-          emptyStar={require('../../app/assets/images/cup_empty.png')}>
-        </Stars>
-        <View>
-          <TextInput
-            style={styles.input}
-            placeholder={"Sample 1"}
-            autoCapitalize={"none"}>
-          </TextInput>
-          <TextInput
-            style={styles.input}
-            placeholder={"Sample 2"}
-            autoCapitalize={"none"}>
-          </TextInput>
-        </View>
-        <Text>Blind?</Text>
-        <Switch
-          onValueChange={(value) => this.setState({blind: value})}
-          value={this.state.blind}>
-        </Switch>
+      <Text>Cups</Text>
+      <Stars
+        rating={this.state.cupCount}
+        update={(value)=>{this.setState({cupCount: value})}}
+        spacing={10}
+        starSize={40}
+        count={5}
+        fullStar={require('../../app/assets/images/cup_full.png')}
+        emptyStar={require('../../app/assets/images/cup_empty.png')}>
+      </Stars>
+      <View>
+        <TextInput
+          style={styles.input}
+          placeholder={"Sample 1"}
+          autoCapitalize={"none"}>
+        </TextInput>
+        <TextInput
+          style={styles.input}
+          placeholder={"Sample 2"}
+          autoCapitalize={"none"}>
+        </TextInput>
+      </View>
+      <Text>Blind?</Text>
+      <Switch
+        onValueChange={(value) => this.setState({blind: value})}
+        value={this.state.blind}>
+      </Switch>
+      <Text>Timer Notification</Text>
       <Button
         onPress={() => navigate('CuppingForm', {
           sampleName1: this.state.samples[0], sampleName2: this.state.samples[1]
@@ -67,6 +68,7 @@ export default class Advanced extends Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {

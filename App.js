@@ -78,11 +78,11 @@ class AccountScreen extends React.Component {
 const MainScreenNavigator = TabNavigator({
   Start: { screen: StartScreen },
   Account: { screen: AccountScreen},
-  // Register: { screen: Register },
 });
 
 MainScreenNavigator.navigationOptions = {
   title: 'Home',
+  //how to add routes here??
 };
 
 const mrcup = StackNavigator({

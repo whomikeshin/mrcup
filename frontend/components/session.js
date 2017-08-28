@@ -30,7 +30,6 @@ export default class Session extends Component {
     const date = new Date();
     return (
       <View style={styles.container}>
-        <View style={styles.div}>
           <Text>Session</Text>
           <TextInput
             style={styles.input}
@@ -38,8 +37,6 @@ export default class Session extends Component {
             onChangeText={(text) => this.setState({name: text})}
             autoCapitalize={"none"}
             />
-        </View>
-        <View style={styles.div}>
           <Text style={styles.header}>Cups</Text>
           <Stars
             rating={1}
@@ -50,8 +47,6 @@ export default class Session extends Component {
             fullStar={require('../../app/assets/images/cup_full.png')}
             emptyStar={require('../../app/assets/images/cup_empty.png')}>
           </Stars>
-        </View>
-        <View style={styles.div}>
           <Text style={styles.header}>Samples</Text>
           <Picker
             style={styles.picker}
@@ -62,13 +57,9 @@ export default class Session extends Component {
             <Picker.Item label="3" value="3" />
             <Picker.Item label="4" value="4" />
             <Picker.Item label="5" value="5" />
-            <Picker.Item label="6" value="6" />
-            <Picker.Item label="7" value="7" />
-            <Picker.Item label="8" value="8" />
-            <Picker.Item label="9" value="9" />
           </Picker>
-        </View>
       <Button
+        style={styles.button}
         onPress={() => navigate('Advanced', {
           sampleCount: this.state.sampleCount, cupCount: this.state.cupCount
         })}
@@ -85,9 +76,6 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-  },
-  div: {
-    flex: 2,
     alignItems: 'center',
   },
   input: {
@@ -102,13 +90,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   picker: {
-    width: 40,
+    width: 80,
     height: 40,
     fontSize: 14,
   },
   header: {
     marginTop: 15,
     marginBottom: 10,
+  },
+  button: {
+    flex: 2,
   },
 });
 
