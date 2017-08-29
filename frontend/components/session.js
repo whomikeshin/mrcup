@@ -19,8 +19,8 @@ export default class Session extends Component {
     super(props);
     this.state = {
       name: '',
-      sampleCount: '1',
-      cupCount: '1',
+      sampleCount: 1,
+      cupCount: 1,
     };
   }
 
@@ -31,7 +31,7 @@ export default class Session extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.div}>
-          <Text>Session</Text>
+          <Text style={styles.header}>Session Name</Text>
           <TextInput
             style={styles.input}
             placeholder={date.toDateString() + " " + date.toLocaleTimeString()}
@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
   },
   div: {
     flex: 2,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   picker: {
     width: 80,
@@ -111,6 +112,7 @@ const styles = StyleSheet.create({
   header: {
     marginTop: 15,
     marginBottom: 10,
+    fontSize: 18,
   },
 });
 
