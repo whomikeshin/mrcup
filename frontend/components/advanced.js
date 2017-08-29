@@ -23,9 +23,9 @@ export default class Advanced extends Component {
       cupCount: params.cupCount,
       blind: false,
       sampleNames: [],
-      dry: 0,
-      crust: 0,
-      slurp: 0,
+      dry: '0',
+      crust: '0',
+      slurp: '0',
     };
   }
 
@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: 'white',
   },
   input: {
     fontSize: 14,

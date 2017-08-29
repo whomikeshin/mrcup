@@ -52,10 +52,6 @@ class StartScreen extends React.Component {
             onPress={() => navigate('SignIn')}
             title="Sign In"
             style={styles.button}/>
-          <Button
-            onPress={() => navigate('SignUp')}
-            title="Sign Up"
-            style={styles.button}/>
         </View>
       </View>
     );
@@ -67,7 +63,10 @@ class AccountScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View>
-        <Text>Account Info</Text>
+        <Button
+          onPress={() => navigate('SignUp')}
+          title="Sign Up"
+          style={styles.button}/>
         <Button
           onPress={() => navigate('SignOut')}
           title="Sign Out"

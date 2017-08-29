@@ -19,8 +19,8 @@ export default class Session extends Component {
     super(props);
     this.state = {
       name: '',
-      sampleCount: 1,
-      cupCount: 1,
+      sampleCount: '1',
+      cupCount: '1',
     };
   }
 
