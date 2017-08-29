@@ -35,25 +35,27 @@ class StartScreen extends React.Component {
         <Text style={styles.text}>Big solutions for small roasters</Text>
         <View style={styles.buttons}>
           <Button
-            onPress={() => navigate('SignIn')}
-            title="Sign In"
-            style={styles.button}
-          />
-          <Button
             onPress={() => navigate('Session', { name: 'Arabica', userName: '' })}
-            title="Start Cupping"
-            style={styles.button}
-          />
+            title="Quick Start"
+            style={styles.button}/>
           <Button
             onPress={() => navigate('PastLogs')}
             title="Past Logs"
-            style={styles.button}
-          />
+            style={styles.button}/>
+          <Button
+            onPress={() => navigate('Advanced', {
+              sampleCount: '1', cupCount: '1'
+            })}
+            title="Advanced"
+            style={styles.button}/>
+          <Button
+            onPress={() => navigate('SignIn')}
+            title="Sign In"
+            style={styles.button}/>
           <Button
             onPress={() => navigate('SignUp')}
             title="Sign Up"
-            style={styles.button}
-          />
+            style={styles.button}/>
         </View>
       </View>
     );
@@ -76,7 +78,7 @@ class AccountScreen extends React.Component {
 }
 
 const MainScreenNavigator = TabNavigator({
-  Start: { screen: StartScreen },
+  Main: { screen: StartScreen },
   Account: { screen: AccountScreen},
 });
 
