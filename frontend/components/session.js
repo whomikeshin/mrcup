@@ -30,6 +30,7 @@ export default class Session extends Component {
     const date = new Date();
     return (
       <View style={styles.container}>
+        <View style={styles.div}>
           <Text>Session</Text>
           <TextInput
             style={styles.input}
@@ -48,23 +49,32 @@ export default class Session extends Component {
             emptyStar={require('../../app/assets/images/cup_empty.png')}>
           </Stars>
           <Text style={styles.header}>Samples</Text>
-          <Picker
-            style={styles.picker}
-            selectedValue={this.state.sampleCount}
-            onValueChange={(value) => this.setState({sampleCount: value})}>
-            <Picker.Item label="1" value="1" />
-            <Picker.Item label="2" value="2" />
-            <Picker.Item label="3" value="3" />
-            <Picker.Item label="4" value="4" />
-            <Picker.Item label="5" value="5" />
-          </Picker>
-      <Button
-        style={styles.button}
-        onPress={() => navigate('Advanced', {
-          sampleCount: this.state.sampleCount, cupCount: this.state.cupCount
-        })}
-        title={'Advanced'}>
-      </Button>
+          <Stars
+            rating={1}
+            update={(value) => {this.setState({sampleCount: value})}}
+            spacing={10}
+            starSize={40}
+            count={5}
+            fullStar={require('../../app/assets/images/coffee_bean_full.png')}
+            emptyStar={require('../../app/assets/images/coffee_bean_empty.png')}>
+          </Stars>
+        </View>
+        <View style={styles.div}>
+          <Button
+            style={styles.button}
+            onPress={() => navigate('CuppingForm', {
+              sampleCount: this.state.sampleCount, cupCount: this.state.cupCount
+            })}
+            title={'Start Cupping'}>
+          </Button>
+          <Button
+            style={styles.button}
+            onPress={() => navigate('Advanced', {
+              sampleCount: this.state.sampleCount, cupCount: this.state.cupCount
+            })}
+            title={'Advanced'}>
+          </Button>
+        </View>
     </View>
     );
   }
@@ -89,6 +99,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
   },
+  div: {
+    flex: 2,
+    alignItems: 'center'
+  },
   picker: {
     width: 80,
     height: 40,
@@ -97,9 +111,6 @@ const styles = StyleSheet.create({
   header: {
     marginTop: 15,
     marginBottom: 10,
-  },
-  button: {
-    flex: 2,
   },
 });
 

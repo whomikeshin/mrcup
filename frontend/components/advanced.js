@@ -29,29 +29,25 @@ export default class Advanced extends Component {
     const { navigate } = this.props.navigation;
     let sampleCount = parseInt(this.state.sampleCount);
     return (
-      <View>
+      <View style={styles.container}>
       <Text>Cups</Text>
-      <Stars
-        rating={this.state.cupCount}
-        update={(value)=>{this.setState({cupCount: value})}}
-        spacing={10}
-        starSize={40}
-        count={5}
-        fullStar={require('../../app/assets/images/cup_full.png')}
-        emptyStar={require('../../app/assets/images/cup_empty.png')}>
-      </Stars>
-      <View>
-        <TextInput
-          style={styles.input}
-          placeholder={"Sample 1"}
-          autoCapitalize={"none"}>
-        </TextInput>
-        <TextInput
-          style={styles.input}
-          placeholder={"Sample 2"}
-          autoCapitalize={"none"}>
-        </TextInput>
-      </View>
+      <TextInput
+        style={styles.input}
+        placeholder={this.state.cupCount}
+        onChangeText={(text) => this.setState({cupCount: text})}
+        autoCapitalize={"none"}>
+      </TextInput>
+      <Text>Samples</Text>
+      <TextInput
+        style={styles.input}
+        placeholder={"Sample 1"}
+        autoCapitalize={"none"}>
+      </TextInput>
+      <TextInput
+        style={styles.input}
+        placeholder={"Sample 2"}
+        autoCapitalize={"none"}>
+      </TextInput>
       <Text>Blind?</Text>
       <Switch
         onValueChange={(value) => this.setState({blind: value})}
@@ -62,7 +58,7 @@ export default class Advanced extends Component {
         onPress={() => navigate('CuppingForm', {
           sampleName1: this.state.samples[0], sampleName2: this.state.samples[1]
         })}
-        title={'CuppingForm'}>
+        title={'Start Cupping'}>
       </Button>
       </View>
     );
