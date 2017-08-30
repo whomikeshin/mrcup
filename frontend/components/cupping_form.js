@@ -13,7 +13,7 @@ import {
   Slider,
   SectionList,
   ListItem,
-  FlatList
+  FlatList,
 } from 'react-native';
 
 export default class CuppingForm extends Component {
@@ -25,7 +25,7 @@ export default class CuppingForm extends Component {
       fragrance: 6,
       dry: 0,
       break: 0,
-      data: [{'fragrance': 6}, {'dry': 0}, {'break': 0}]
+      data: [{'fragrance': '6'}, {'dry': '0'}, {'break': '0'}]
     };
   }
 
@@ -34,11 +34,11 @@ export default class CuppingForm extends Component {
     return (
       <SectionList
         renderItem={({item}) => <ListItem title={item.title} />}
-        renderSectionHeader={({section}) => <h1 title={section.title} />}
+        renderSectionHeader={({section}) => <Text title={section.title} />}
         sections={[ // homogenous rendering between sections
-          {data: [6], title: 'fragrance'},
-          {data: [0], title: 'dry'},
-          {data: [0], title: 'break'},
+          {data: ['6'], title: 'fragrance'},
+          {data: ['0'], title: 'dry'},
+          {data: ['0'], title: 'break'},
         ]}
       />
     );
