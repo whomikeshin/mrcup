@@ -30,17 +30,51 @@ export default class CuppingForm extends Component {
   }
 
   render() {
-    // const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation;
     return (
-      <SectionList
-        renderItem={({item}) => <ListItem title={item.title} />}
-        renderSectionHeader={({section}) => <Text title={section.title} />}
-        sections={[ // homogenous rendering between sections
-          {data: ['6'], title: 'fragrance'},
-          {data: ['0'], title: 'dry'},
-          {data: ['0'], title: 'break'},
-        ]}
-      />
+      <ScrollView>
+        <Text style={styles.header}>
+          Sample Name
+        </Text>
+        <View style={styles.div}>
+          <View style={styles.inline}>
+            <Text>Fragrance/Aroma</Text>
+            <Text style={styles.box}>{this.state.fragrance}</Text>
+          </View>
+          <Slider
+            style={styles.slider}
+            maximumValue={10}
+            minimumValue={6}
+            step={.25}
+            onValueChange={(value) => this.setState({fragrance: value})}>
+          </Slider>
+          <View style={styles.inline}>
+            <Text>Dry</Text>
+            <Text>{this.state.dry}</Text>
+          </View>
+          <Slider
+            style={styles.slider}
+            maximumValue={5}
+            minimumValue={0}
+            step={.25}
+            onValueChange={(value) => this.setState({dry: value})}>
+          </Slider>
+          <View style={styles.inline}>
+            <Text>Break</Text>
+            <Text>{this.state.break}</Text>
+          </View>
+          <Slider
+            style={styles.slider}
+            maximumValue={5}
+            minimumValue={0}
+            step={.25}
+            onValueChange={(value) => this.setState({break: value})}>
+          </Slider>
+        </View>
+        <View style={styles.div}>
+
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -56,45 +90,22 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center'
   },
+  inline: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 300,
+  },
   slider: {
     width: 300,
-  }
+  },
 });
 
-// <ScrollView>
-//   <Text style={styles.header}>
-//     Sample Name
-//   </Text>
-//   <View style={styles.div}>
-//     <Text>Fragrance/Aroma</Text>
-//     <Text>{this.state.fragrance}</Text>
-//     <Slider
-//       style={styles.slider}
-//       maximumValue={10}
-//       minimumValue={6}
-//       step={.25}
-//       onValueChange={(value) => this.setState({fragrance: value})}>
-//     </Slider>
-//     <Text>Dry</Text>
-//     <Text>{this.state.dry}</Text>
-//     <Slider
-//       style={styles.slider}
-//       maximumValue={5}
-//       minimumValue={0}
-//       step={.25}
-//       onValueChange={(value) => this.setState({dry: value})}>
-//     </Slider>
-//     <Text>Break</Text>
-//     <Text>{this.state.break}</Text>
-//     <Slider
-//       style={styles.slider}
-//       maximumValue={5}
-//       minimumValue={0}
-//       step={.25}
-//       onValueChange={(value) => this.setState({break: value})}>
-//     </Slider>
-//   </View>
-//   <View style={styles.div}>
-//
-//   </View>
-// </ScrollView>
+// <SectionList
+//   renderItem={({item}) => <ListItem title={item.title} />}
+//   renderSectionHeader={({section}) => <Text title={section.title} />}
+//   sections={[
+//     {data: ['6'], title: 'fragrance'},
+//     {data: ['0'], title: 'dry'},
+//     {data: ['0'], title: 'break'},
+//   ]}
+// />
