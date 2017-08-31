@@ -22,7 +22,7 @@ export default class Advanced extends Component {
       sampleCount: params.sampleCount,
       cupCount: params.cupCount,
       blind: false,
-      sampleNames: [],
+      sampleNames: ['Arabica', 'Robusta'],
       dry: '0',
       crust: '0',
       slurp: '0',
@@ -84,7 +84,7 @@ export default class Advanced extends Component {
         </Picker>
         <Button
           onPress={() => navigate('CuppingForm', {
-            sampleName1: this.state.samples[0], sampleName2: this.state.samples[1]
+            //props
           })}
           title={'Start Cupping'}>
         </Button>
@@ -122,6 +122,5 @@ const styles = StyleSheet.create({
   picker: {
     width: 80,
     height: 20,
-    fontSize: 14,
   },
 });

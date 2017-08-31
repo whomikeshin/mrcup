@@ -34,7 +34,7 @@ export default class CuppingForm extends Component {
     return (
       <ScrollView>
         <Text style={styles.header}>
-          Sample Name
+          Arabica
         </Text>
         <View style={styles.div}>
           <View style={styles.inline}>
