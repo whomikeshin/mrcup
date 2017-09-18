@@ -9,7 +9,8 @@ import {
   TextInput,
   Button,
   Alert,
-  Picker
+  Picker,
+  TouchableHighlight,
 } from 'react-native';
 
 import Stars from 'react-native-stars';
@@ -19,9 +20,21 @@ export default class Session extends Component {
     super(props);
     this.state = {
       name: '',
-      sampleCount: '1',
-      cupCount: '1',
+      sampleCount: 1,
+      sampleNames: [],
+      cupCount: 1,
     };
+  }
+
+  submitEdit(value) {
+    let addOne = this.state.sampleCount += 1,
+        addToSampleNames = this.state.sampleNames;
+    addToSampleNames.push(value);
+
+    if (addOne <= 30) {
+      this.setState({sampleCount: addOne, sampleNames: addToSampleNames});
+    }
+    //9/18: add Alert
   }
 
   render() {
@@ -48,16 +61,16 @@ export default class Session extends Component {
             fullStar={require('../../app/assets/images/cup_full.png')}
             emptyStar={require('../../app/assets/images/cup_empty.png')}>
           </Stars>
-          <Text style={styles.header}>Samples</Text>
-          <Stars
-            rating={1}
-            update={(value) => {this.setState({sampleCount: value})}}
-            spacing={10}
-            starSize={40}
-            count={5}
-            fullStar={require('../../app/assets/images/coffee_bean_full.png')}
-            emptyStar={require('../../app/assets/images/coffee_bean_empty.png')}>
-          </Stars>
+          <View style={styles.div}>
+            <Text style={styles.header}>Samples</Text>
+            <Text style={styles.header}>{this.state.sampleCount}</Text>
+            <TextInput
+              style={styles.input}
+              placeholder={"Enter Sample Name"}
+              autoCapitalize={"none"}
+              onSubmitEditing={(value) => this.submitEdit(value)}>
+            </TextInput>
+          </View>
         </View>
         <View style={styles.div}>
           <Button
@@ -70,7 +83,7 @@ export default class Session extends Component {
           <Button
             style={styles.button}
             onPress={() => navigate('Advanced', {
-              sampleCount: this.state.sampleCount, cupCount: this.state.cupCount
+              sampleCount: this.state.sampleCount.toString(), cupCount: this.state.cupCount.toString()
             })}
             title={'Advanced'}>
           </Button>
@@ -113,6 +126,10 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 10,
     fontSize: 18,
+  },
+  image: {
+    width: 375,
+    height: 200,
   },
 });
 

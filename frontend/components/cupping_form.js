@@ -25,6 +25,9 @@ export default class CuppingForm extends Component {
       fragrance: 6,
       dry: 0,
       break: 0,
+      flavor: 6,
+      acidity: 6,
+      intensity: 0,
       data: [{'fragrance': '6'}, {'dry': '0'}, {'break': '0'}]
     };
   }
@@ -69,6 +72,28 @@ export default class CuppingForm extends Component {
             minimumValue={0}
             step={.25}
             onValueChange={(value) => this.setState({break: value})}>
+          </Slider>
+          <View style={styles.inline}>
+            <Text>Flavor</Text>
+            <Text>{this.state.flavor}</Text>
+          </View>
+          <Slider
+            style={styles.slider}
+            maximumValue={5}
+            minimumValue={0}
+            step={.25}
+            onValueChange={(value) => this.setState({flavor: value})}>
+          </Slider>
+          <View style={styles.inline}>
+            <Text>Acidity</Text>
+            <Text>{this.state.acidity}</Text>
+          </View>
+          <Slider
+            style={styles.slider}
+            maximumValue={5}
+            minimumValue={0}
+            step={.25}
+            onValueChange={(value) => this.setState({acidity: value})}>
           </Slider>
         </View>
         <View style={styles.div}>
