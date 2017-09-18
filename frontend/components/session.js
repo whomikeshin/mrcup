@@ -18,9 +18,11 @@ import Stars from 'react-native-stars';
 export default class Session extends Component {
   constructor(props) {
     super(props);
+    const date = new Date();
+    let defaultName = date.toDateString() + " " + date.toLocaleTimeString();
     this.state = {
-      name: '',
-      sampleCount: 1,
+      name: defaultName,
+      sampleCount: 0,
       sampleNames: [],
       cupCount: 1,
     };
@@ -34,20 +36,19 @@ export default class Session extends Component {
     if (addOne <= 30) {
       this.setState({sampleCount: addOne, sampleNames: addToSampleNames});
     }
-    //9/18: add Alert
+    //9/18: add Alert if over 30
   }
 
   render() {
     const { params } = this.props.navigation.state;
     const { navigate } = this.props.navigation;
-    const date = new Date();
     return (
       <View style={styles.container}>
         <View style={styles.div}>
           <Text style={styles.header}>Session Name</Text>
           <TextInput
             style={styles.input}
-            placeholder={date.toDateString() + " " + date.toLocaleTimeString()}
+            placeholder={this.state.name}
             onChangeText={(text) => this.setState({name: text})}
             autoCapitalize={"none"}
             />
@@ -76,14 +77,19 @@ export default class Session extends Component {
           <Button
             style={styles.button}
             onPress={() => navigate('CuppingForm', {
-              sampleCount: this.state.sampleCount, cupCount: this.state.cupCount
+              sampleCount: this.state.sampleCount,
+              sampleNames: this.state.sampleNames,
+              cupCount: this.state.cupCount
             })}
             title={'Start Cupping'}>
           </Button>
           <Button
             style={styles.button}
             onPress={() => navigate('Advanced', {
-              sampleCount: this.state.sampleCount.toString(), cupCount: this.state.cupCount.toString()
+              name: this.state.name,
+              sampleCount: this.state.sampleCount.toString(),
+              sampleNames: this.state.sampleNames,
+              cupCount: this.state.cupCount.toString(),
             })}
             title={'Advanced'}>
           </Button>

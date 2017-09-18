@@ -19,21 +19,37 @@ export default class Advanced extends Component {
     super(props);
     const { params } = this.props.navigation.state;
     this.state = {
+      name: params.name,
       sampleCount: params.sampleCount,
+      sampleNames: params.sampleNames,
       cupCount: params.cupCount,
       blind: false,
-      sampleNames: ['Arabica', 'Robusta'],
       dry: '0',
       crust: '0',
       slurp: '0',
     };
   }
 
+  // sampleList() {
+  //   const sampleNames = this.state.sampleNames;
+  //   return sampleNames.map(function(name){
+  //     return(
+  //       <View>
+  //         <Text>{name}</Text>
+  //       </View>
+  //     );
+  //   });
+  // }
+
   render() {
     const { navigate } = this.props.navigation;
     let sampleCount = parseInt(this.state.sampleCount);
+
     return (
       <View style={styles.container}>
+        <Text>
+          {this.state.name}
+        </Text>
         <Text style={styles.header}>
           Cups
         </Text>
@@ -43,19 +59,9 @@ export default class Advanced extends Component {
           onChangeText={(text) => this.setState({cupCount: text})}
           autoCapitalize={"none"}>
         </TextInput>
-        <Text style={styles.header}>
-          Sample Name
-        </Text>
-        <TextInput
-          style={styles.input}
-          placeholder={"Sample 1"}
-          autoCapitalize={"none"}>
-        </TextInput>
-        <TextInput
-          style={styles.input}
-          placeholder={"Sample 2"}
-          autoCapitalize={"none"}>
-        </TextInput>
+        <View style={styles.conatiner}>
+
+        </View>
         <Text style={styles.header}>
           Blind?
         </Text>
