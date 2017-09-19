@@ -47,7 +47,7 @@ export default class Advanced extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>
+        <Text style={styles.header}>
           {this.state.name}
         </Text>
         <Text style={styles.header}>
@@ -59,9 +59,6 @@ export default class Advanced extends Component {
           onChangeText={(text) => this.setState({cupCount: text})}
           autoCapitalize={"none"}>
         </TextInput>
-        <View style={styles.conatiner}>
-
-        </View>
         <Text style={styles.header}>
           Blind?
         </Text>
@@ -76,18 +73,29 @@ export default class Advanced extends Component {
         <Text>
           *Influsion is reference point
         </Text>
-        <Text style={styles.header}>
-          Dry
-        </Text>
-        <Picker
-          style={styles.picker}
-          selectedValue={this.state.dry}
-          onValueChange={(value) => this.setState({dry: value})}>
-          <Picker.Item label="0" value="0" />
-          <Picker.Item label="1" value="1" />
-          <Picker.Item label="2" value="2" />
-          <Picker.Item label="3" value="3" />
-        </Picker>
+        <View style={styles.container}>
+          <Text style={styles.header}>
+            Dry
+          </Text>
+          <Button
+            onPress={() => navigate('Timer', { })}
+            title={'Set'}>
+          </Button>
+          <Text style={styles.header}>
+            Crust
+          </Text>
+          <Button
+            onPress={() => navigate('Timer', { })}
+            title={'Set'}>
+          </Button>
+          <Text style={styles.header}>
+            Slurp
+          </Text>
+          <Button
+            onPress={() => navigate('Timer', { })}
+            title={'Set'}>
+          </Button>
+        </View>
         <Button
           onPress={() => navigate('CuppingForm', {
             //props
@@ -106,6 +114,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 10,
+  },
+  row: {
+    flexDirection: 'row',
   },
   input: {
     fontSize: 14,
