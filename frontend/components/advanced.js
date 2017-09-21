@@ -19,21 +19,37 @@ export default class Advanced extends Component {
     super(props);
     const { params } = this.props.navigation.state;
     this.state = {
+      name: params.name,
       sampleCount: params.sampleCount,
+      sampleNames: params.sampleNames,
       cupCount: params.cupCount,
       blind: false,
-      sampleNames: [],
-      dry: '0',
-      crust: '0',
-      slurp: '0',
+      dry: 0,
+      crust: 0,
+      slurp: 0,
     };
   }
+
+  // sampleList() {
+  //   const sampleNames = this.state.sampleNames;
+  //   return sampleNames.map(function(name){
+  //     return(
+  //       <View>
+  //         <Text>{name}</Text>
+  //       </View>
+  //     );
+  //   });
+  // }
 
   render() {
     const { navigate } = this.props.navigation;
     let sampleCount = parseInt(this.state.sampleCount);
+
     return (
       <View style={styles.container}>
+        <Text style={styles.header}>
+          {this.state.name}
+        </Text>
         <Text style={styles.header}>
           Cups
         </Text>
@@ -41,19 +57,6 @@ export default class Advanced extends Component {
           style={styles.input}
           placeholder={this.state.cupCount}
           onChangeText={(text) => this.setState({cupCount: text})}
-          autoCapitalize={"none"}>
-        </TextInput>
-        <Text style={styles.header}>
-          Sample Name
-        </Text>
-        <TextInput
-          style={styles.input}
-          placeholder={"Sample 1"}
-          autoCapitalize={"none"}>
-        </TextInput>
-        <TextInput
-          style={styles.input}
-          placeholder={"Sample 2"}
           autoCapitalize={"none"}>
         </TextInput>
         <Text style={styles.header}>
@@ -70,21 +73,32 @@ export default class Advanced extends Component {
         <Text>
           *Influsion is reference point
         </Text>
-        <Text style={styles.header}>
-          Dry
-        </Text>
-        <Picker
-          style={styles.picker}
-          selectedValue={this.state.dry}
-          onValueChange={(value) => this.setState({dry: value})}>
-          <Picker.Item label="0" value="0" />
-          <Picker.Item label="1" value="1" />
-          <Picker.Item label="2" value="2" />
-          <Picker.Item label="3" value="3" />
-        </Picker>
+        <View style={styles.container}>
+          <Text style={styles.header}>
+            Dry
+          </Text>
+          <Button
+            onPress={() => navigate('Timer', { })}
+            title={'Set'}>
+          </Button>
+          <Text style={styles.header}>
+            Crust
+          </Text>
+          <Button
+            onPress={() => navigate('Timer', { })}
+            title={'Set'}>
+          </Button>
+          <Text style={styles.header}>
+            Slurp
+          </Text>
+          <Button
+            onPress={() => navigate('Timer', { })}
+            title={'Set'}>
+          </Button>
+        </View>
         <Button
           onPress={() => navigate('CuppingForm', {
-            sampleName1: this.state.samples[0], sampleName2: this.state.samples[1]
+            //props
           })}
           title={'Start Cupping'}>
         </Button>
@@ -100,6 +114,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 10,
+  },
+  row: {
+    flexDirection: 'row',
   },
   input: {
     fontSize: 14,
@@ -122,6 +139,5 @@ const styles = StyleSheet.create({
   picker: {
     width: 80,
     height: 20,
-    fontSize: 14,
   },
 });
