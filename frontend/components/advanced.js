@@ -24,9 +24,9 @@ export default class Advanced extends Component {
       sampleNames: params.sampleNames,
       cupCount: params.cupCount,
       blind: false,
-      dry: '0',
-      crust: '0',
-      slurp: '0',
+      dry: 0,
+      crust: 0,
+      slurp: 0,
     };
   }
 
